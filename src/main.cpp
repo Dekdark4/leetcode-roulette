@@ -42,7 +42,7 @@ int main()
 			std::cout << "Error." << std::endl;
 			std::cin.get();
 			continue;
-		}
+		}	
 		uint16_t option = opt.value();
 		// ===========================================================
 		
