@@ -3,6 +3,13 @@
 #include <string>
 #include <cstdint>
 
+enum class MenuOptions
+{
+	exit,
+	get_problem,
+	add_problem
+};
+
 int main()
 {
 	std::cout << "========= MAIN MENU =========" << std::endl;
