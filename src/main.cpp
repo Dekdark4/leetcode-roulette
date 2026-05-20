@@ -2,6 +2,7 @@
 #include <iomanip>
 #include <string>
 #include <cstdint>
+#include "StringParser.h"
 
 enum class MenuOptions
 {
@@ -35,16 +36,24 @@ int main()
 
 
 		// ====================== ПАРСИНГ ВВОДА ======================
+		auto opt = Parser::try_parse_uint(option_str);
+		if (!opt)
+		{
+			std::cout << "Error." << std::endl;
+			std::cin.get();
+			continue;
+		}
+		uint16_t option = opt.value();
 		// ===========================================================
 		
 
 
 		// ======= ПРЕОБРАЗОВАНИЕ В enum И ВЫПОЛНЕНИЕ ДЕЙСТВИЯ =======
-		MenuOptions choice;
+		MenuOptions choice = static_cast<MenuOptions>(option);
 
 		switch (choice)
 		{
-
+			
 		}
 		// ===========================================================
 		
