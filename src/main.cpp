@@ -67,6 +67,10 @@ int main()
 		{
 
 		}
+		case MenuOptions::add_problem:
+		{
+
+		}
 		default:
 		{
 			system("cls");
