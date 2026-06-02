@@ -63,6 +63,18 @@ int main()
 			std::cin.get();
 			return 0;
 		}
+		case MenuOptions::get_problem:
+		{
+
+		}
+		default:
+		{
+			system("cls");
+			std::cout << "Something wrong... [press enter]";
+			std::cin.get();
+			system("cls");
+			continue;
+		}
 		}
 		// ===========================================================
 		
