@@ -4,6 +4,19 @@
 
 void Problem::add_problem(std::string problem)
 {
+	bool is_empty{ false };
+	{
+		std::ifstream check(PATH);
+		if (check.is_open())
+		{
+			is_empty = (check.peek() == std::ifstream::traits_type::eof());
+		}
+		else
+		{
+			is_empty = true;
+		}
+	}
+
 	std::ofstream all_problems_txt;
 	all_problems_txt.open(PATH, std::ofstream::app);
 
@@ -14,6 +27,9 @@ void Problem::add_problem(std::string problem)
 		std::cin.get();
 		return;
 	}
-	
-	all_problems_txt << "\n" + problem;
+
+	if (!is_empty)
+		all_problems_txt << "\n";
+
+	all_problems_txt << problem;
 }

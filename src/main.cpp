@@ -20,6 +20,7 @@ int main()
 
 	while (true)
 	{
+		system("cls");
 		// ===================== ОТРИСОВКА МЕНЮ ======================
 		std::cout << "========= MAIN MENU =========" << std::endl;
 		std::cout << std::setw(14) << std::left << "Get problem:" << std::setw(5) << std::right << "[1]" << std::endl;
@@ -44,7 +45,6 @@ int main()
 			system("cls");
 			std::cout << "Error... [press enter]" << std::endl;
 			std::cin.get();
-			system("cls");
 			continue;
 		}
 		uint16_t option = opt.value();
@@ -79,7 +79,6 @@ int main()
 			system("cls");
 			std::cout << "Something wrong... [press enter]";
 			std::cin.get();
-			system("cls");
 			continue;
 		}
 		}
@@ -89,7 +88,6 @@ int main()
 
 		// ========================== ПАУЗА ==========================
 		std::cin.get();
-		system("cls");
 		// ===========================================================
 	}
 
