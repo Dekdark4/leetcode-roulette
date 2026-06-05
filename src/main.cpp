@@ -8,7 +8,8 @@ enum class MenuOptions
 {
 	exit,
 	get_problem,
-	add_problem
+	add_problem,
+	_LAST_
 };
 
 int main()
@@ -37,12 +38,14 @@ int main()
 
 		// ====================== ПАРСИНГ ВВОДА ======================
 		auto opt = Parser::try_parse_uint(option_str);
-		if (!opt)
+		if (!opt || opt.value() < 0 || opt.value() >= static_cast<uint16_t>(MenuOptions::_LAST_))
 		{
-			std::cout << "Error." << std::endl;
+			system("cls");
+			std::cout << "Error... [press enter]" << std::endl;
 			std::cin.get();
+			system("cls");
 			continue;
-		}	
+		}
 		uint16_t option = opt.value();
 		// ===========================================================
 		
@@ -53,7 +56,29 @@ int main()
 
 		switch (choice)
 		{
-			
+		case MenuOptions::exit:
+		{
+			system("cls");
+			std::cout << "Exiting the program... [press enter]";
+			std::cin.get();
+			return 0;
+		}
+		case MenuOptions::get_problem:
+		{
+
+		}
+		case MenuOptions::add_problem:
+		{
+
+		}
+		default:
+		{
+			system("cls");
+			std::cout << "Something wrong... [press enter]";
+			std::cin.get();
+			system("cls");
+			continue;
+		}
 		}
 		// ===========================================================
 		
