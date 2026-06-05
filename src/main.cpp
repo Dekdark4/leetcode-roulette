@@ -69,7 +69,7 @@ int main()
 		}
 		case MenuOptions::add_problem:
 		{
-			Problem::add_problem();
+			//Problem::add_problem();
 		}
 		default:
 		{

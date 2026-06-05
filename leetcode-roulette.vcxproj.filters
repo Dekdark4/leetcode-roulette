@@ -21,9 +21,15 @@
     <ClCompile Include="src\StringParser.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Problem.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\StringParser.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Problem.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>

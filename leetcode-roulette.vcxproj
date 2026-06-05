@@ -141,9 +141,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Problem.cpp" />
     <ClCompile Include="src\StringParser.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Problem.h" />
     <ClInclude Include="include\StringParser.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
