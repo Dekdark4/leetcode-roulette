@@ -3,6 +3,7 @@
 #include <string>
 #include <cstdint>
 #include "StringParser.h"
+#include "Problem.h"
 
 enum class MenuOptions
 {
