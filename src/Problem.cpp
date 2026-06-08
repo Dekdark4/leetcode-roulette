@@ -48,31 +48,41 @@ bool Problem::check_file(const std::string& PATH)
 
 void Problem::Problem::load_tasks()
 {
-	// 1. Проверить, не пуст ли файл all_tasks.txt
-	bool is_empty = check_file(PATH_ALL);
-	// 2. Загрузить проблемы в вектор all_tasks
-	// 3. Если remaining_problems.txt пуст, то скопировать all_tasks в remaining_tasks
-	// 
+	// 1. Если файл со всеми задачами есть и не пуст — загружаем в вектор
+	std::ifstream all_file(PATH_ALL);
+	if (all_file.is_open())
+	{
+		std::string line{};
+		while (std::getline(all_file, line))
+		{
+			all_tasks.push_back(line);
+		}
+	}
+	// 2. Есть ли файл с сохранением???
+	if (check_file(PATH_SAVE))	// нет или пуст
+	{
+		remaining_tasks = all_tasks;
+	}
+	else	// в нём что-то есть
+	{
+		std::ifstream save_file(PATH_SAVE);
+		if (save_file.is_open())
+		{
+			std::string line{};
+			while (std::getline(save_file, line));
+			{
+				remaining_tasks.push_back(line);
+			}
+		}
+	}
 }
 
 void Problem::Problem::add_problem(const std::string& problem)
 {
-	bool is_empty{ false };
-	{
-		std::ifstream check(PATH_ALL);
-		if (check.is_open())
-		{
-			is_empty = (check.peek() == std::ifstream::traits_type::eof());
-		}
-		else
-		{
-			is_empty = true;
-		}
-	}
+	// 1. Проверяем, пуст ли файл (или не существует)
+	bool is_empty{ check_file(PATH_ALL) };
 
-	std::ofstream all_problems_txt;
-	all_problems_txt.open(PATH_ALL, std::ofstream::app);
-
+	std::ofstream all_problems_txt(PATH_ALL, std::ios::app);
 	if (!all_problems_txt.is_open())
 		throw std::runtime_error(std::format("The file has not opened... [press enter].\n"));
 
@@ -83,4 +93,7 @@ void Problem::Problem::add_problem(const std::string& problem)
 		all_problems_txt << "\n";
 
 	all_problems_txt << problem;
+
+	all_tasks.push_back(problem);
+	remaining_tasks.push_back(problem);
 }
