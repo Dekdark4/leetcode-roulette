@@ -3,6 +3,8 @@
 #include <iostream>
 #include <fstream>
 #include <format>
+#include <random>
+#include <ctime>
 
 bool Problem::check_problem_syntax(const std::string& problem)
 {
@@ -77,6 +79,24 @@ void Problem::Problem::load_tasks()
 	}
 }
 
+void Problem::Problem::save_remaining()
+{
+	std::ofstream save_file(PATH_SAVE);
+	if (!save_file.is_open())
+	{
+		throw std::runtime_error(std::format("Не удалось открыть файл '{}' для записи. [Нажми enter].\n", PATH_SAVE));
+	}
+
+	for (size_t i{}; i < remaining_tasks.size(); ++i)
+	{
+		save_file << remaining_tasks[i];
+		if (i != remaining_tasks.size() - 1)
+		{
+			save_file << "\n";
+		}
+	}
+}
+
 void Problem::Problem::add_problem(const std::string& problem)
 {
 	// 1. Проверяем, пуст ли файл (или не существует)
@@ -96,4 +116,20 @@ void Problem::Problem::add_problem(const std::string& problem)
 
 	all_tasks.push_back(problem);
 	remaining_tasks.push_back(problem);
+}
+
+std::optional<std::string> Problem::Problem::get_problem()
+{
+	if (remaining_tasks.empty())
+		return std::nullopt;
+
+	static std::mt19937_64 rng(std::time(nullptr));
+	std::shuffle(remaining_tasks.begin(), remaining_tasks.end(), rng);
+
+	std::string problem{ remaining_tasks.back() };
+	remaining_tasks.pop_back();
+
+	save_remaining();
+
+	return problem;
 }
