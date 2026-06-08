@@ -3,8 +3,6 @@
 #include <vector>
 #include <optional>
 
-static const std::string PATH = "saves/all_problems.txt";
-
 namespace Problem
 {
 	class Problem
@@ -24,5 +22,6 @@ namespace Problem
 	};
 
 	bool check_problem_syntax(const std::string& problem);
+	bool check_file(const std::string& PATH);
 
 }

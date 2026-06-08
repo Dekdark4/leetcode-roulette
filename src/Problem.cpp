@@ -37,7 +37,16 @@ bool Problem::check_problem_syntax(const std::string& problem)
 	return true;
 }
 
-void Problem::Problem::load_tasks()
+bool Problem::check_file(const std::string& PATH)
+{
+	std::ifstream check(PATH);
+	if (check.is_open())
+		return check.peek() == std::ifstream::traits_type::eof();
+	else
+		return true;
+}
+
+/void Problem::Problem::load_tasks()
 {
 	// 1. Проверить, не пуст ли файл all_tasks.txt
 	// 2. Загрузить проблемы в вектор all_tasks
