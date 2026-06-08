@@ -10,4 +10,8 @@ namespace Problem
 
 	void add_problem(const std::string& problem);
 
+	void get_problem();
+
+	void remove_problem();
+
 }
