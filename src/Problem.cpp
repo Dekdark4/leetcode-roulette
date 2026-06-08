@@ -37,7 +37,7 @@ bool Problem::check_problem_syntax(const std::string& problem)
 	return true;
 }
 
-void Problem::add_problem(const std::string& problem)
+void Problem::Problem::add_problem(const std::string& problem)
 {
 	bool is_empty{ false };
 	{
