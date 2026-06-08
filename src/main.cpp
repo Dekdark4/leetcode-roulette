@@ -70,8 +70,7 @@ int main()
 		}
 		case MenuOptions::add_problem:
 		{
-			Problem::add_problem("1. Strings");
-			Problem::add_problem("2. Arrays");
+
 			break;
 		}
 		default:

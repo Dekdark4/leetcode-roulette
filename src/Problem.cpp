@@ -3,7 +3,7 @@
 #include <fstream>
 #include <format>
 
-void Problem::add_problem(std::string problem)
+void Problem::add_problem(const std::string& problem)
 {
 	bool is_empty{ false };
 	{

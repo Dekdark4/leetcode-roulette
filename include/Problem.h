@@ -6,6 +6,6 @@ static const std::string PATH = "saves/all_problems.txt";
 namespace Problem
 {
 
-	void add_problem(std::string problem);
+	void add_problem(const std::string& problem);
 
 }
