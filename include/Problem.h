@@ -14,6 +14,7 @@ namespace Problem
 		void save_remaining();
 		void add_problem(const std::string& problem);
 		std::optional<std::string> get_problem();
+		void reset_problems();
 
 	private:
 		std::vector<std::string> all_tasks{};
@@ -23,11 +24,5 @@ namespace Problem
 	};
 
 	bool check_problem_syntax(const std::string& problem);
-
-	void add_problem(const std::string& problem);
-
-	void get_problem();
-
-	void remove_problem();
 
 }

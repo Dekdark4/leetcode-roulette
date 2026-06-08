@@ -37,6 +37,14 @@ bool Problem::check_problem_syntax(const std::string& problem)
 	return true;
 }
 
+void Problem::Problem::load_tasks()
+{
+	// 1. Проверить, не пуст ли файл all_tasks.txt
+	// 2. Загрузить проблемы в вектор all_tasks
+	// 3. Если remaining_problems.txt пуст, то скопировать all_tasks в remaining_tasks
+	// 
+}
+
 void Problem::Problem::add_problem(const std::string& problem)
 {
 	bool is_empty{ false };
