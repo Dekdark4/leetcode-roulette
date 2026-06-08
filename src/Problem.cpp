@@ -42,13 +42,14 @@ bool Problem::check_file(const std::string& PATH)
 	std::ifstream check(PATH);
 	if (check.is_open())
 		return check.peek() == std::ifstream::traits_type::eof();
-	else
-		return true;
+	
+	return true;
 }
 
-/void Problem::Problem::load_tasks()
+void Problem::Problem::load_tasks()
 {
 	// 1. Проверить, не пуст ли файл all_tasks.txt
+	bool is_empty = check_file(PATH_ALL);
 	// 2. Загрузить проблемы в вектор all_tasks
 	// 3. Если remaining_problems.txt пуст, то скопировать all_tasks в remaining_tasks
 	// 
@@ -58,7 +59,7 @@ void Problem::Problem::add_problem(const std::string& problem)
 {
 	bool is_empty{ false };
 	{
-		std::ifstream check(PATH);
+		std::ifstream check(PATH_ALL);
 		if (check.is_open())
 		{
 			is_empty = (check.peek() == std::ifstream::traits_type::eof());
@@ -70,7 +71,7 @@ void Problem::Problem::add_problem(const std::string& problem)
 	}
 
 	std::ofstream all_problems_txt;
-	all_problems_txt.open(PATH, std::ofstream::app);
+	all_problems_txt.open(PATH_ALL, std::ofstream::app);
 
 	if (!all_problems_txt.is_open())
 		throw std::runtime_error(std::format("The file has not opened... [press enter].\n"));
