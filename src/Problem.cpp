@@ -1,6 +1,7 @@
 ﻿#include "Problem.h"
 #include <iostream>
 #include <fstream>
+#include <format>
 
 void Problem::add_problem(std::string problem)
 {
@@ -22,10 +23,7 @@ void Problem::add_problem(std::string problem)
 
 	if (!all_problems_txt.is_open())
 	{
-		system("cls");
-		std::cerr << "The file has not opened... [press enter]";
-		std::cin.get();
-		return;
+		throw std::runtime_error(std::format("The file has not opened... [press enter]\n"));
 	}
 
 	if (!is_empty)
