@@ -133,3 +133,9 @@ std::optional<std::string> Problem::Problem::get_problem()
 
 	return problem;
 }
+
+void Problem::Problem::reset_problems()
+{
+	remaining_tasks = all_tasks;
+	save_remaining();
+}

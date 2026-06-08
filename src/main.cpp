@@ -16,7 +16,8 @@ enum class MenuOptions
 int main()
 {
 
-
+	Problem::Problem manager;
+	manager.load_tasks();
 
 	while (true)
 	{
